@@ -549,6 +549,7 @@ class FlutterSelectState<T> extends State<FlutterSelect<T>> {
 
   Widget _buildOptionsList() {
     final effectiveOptionsPadding = widget.optionsPadding ?? const EdgeInsets.all(4);
+    final state = this;
 
     if (widget.options != null) {
       return StatefulBuilder(
@@ -563,7 +564,7 @@ class FlutterSelectState<T> extends State<FlutterSelect<T>> {
                   widget.options!.map((option) {
                     // Wrap each option with a FlutterOptionProvider
                     if (option is FlutterOption<T>) {
-                      return FlutterOptionProvider<T>(state: this, child: option);
+                      return FlutterOptionProvider<T>(state: state, child: option);
                     }
                     return option;
                   }).toList(),
